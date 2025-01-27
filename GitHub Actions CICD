@@ -1,0 +1,43 @@
+name: Lunq CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+      - run: anchor test
+      - run: cd ai-agent && npm install && npm test
+
+How to Use:
+Clone the repo:
+
+bash
+Copy
+git clone https://github.com/yourusername/Lunq-Token-AI-Agent.git
+cd Lunq-Token-AI-Agent
+Install dependencies:
+
+bash
+Copy
+# For Solana contracts
+anchor build
+
+# For AI Agent
+cd ai-agent && npm install
+Deploy contracts:
+
+bash
+Copy
+chmod +x scripts/deploy.sh
+./scripts/deploy.sh
+Start the AI Agent:
+
+bash
+Copy
+cd ai-agent && npm start
